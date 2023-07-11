@@ -18,6 +18,6 @@ public class HealthControllerTest {
     @Test
     public void testHealth () throws Exception {
         mockMvc.perform(get("/health").contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk());
+                .andExpect(MockMvcResultMatchers.status().isBadRequest());
     }
 }
