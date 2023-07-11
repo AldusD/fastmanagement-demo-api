@@ -6,4 +6,4 @@ COPY . .
 
 RUN ./mvnw clean package
 
-ENTRYPOINT ["java","-jar","target/coffeenances-api-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","target/fastmanagementdemoapi-0.0.1-SNAPSHOT.jar"]
