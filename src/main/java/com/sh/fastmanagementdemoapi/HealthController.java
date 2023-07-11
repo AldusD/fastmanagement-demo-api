@@ -1,4 +1,4 @@
-package com.sh.fastmanagementdemoapi.controllers;
+package com.sh.fastmanagementdemoapi;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
