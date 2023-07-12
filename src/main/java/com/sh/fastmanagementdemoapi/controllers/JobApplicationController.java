@@ -1,7 +1,10 @@
 package com.sh.fastmanagementdemoapi.controllers;
 
+import com.sh.fastmanagementdemoapi.dtos.JobApplicationApprovedDto;
 import com.sh.fastmanagementdemoapi.dtos.JobApplicationIdDto;
 import com.sh.fastmanagementdemoapi.dtos.JobApplicationNameDto;
+import com.sh.fastmanagementdemoapi.dtos.JobApplicationStatusDto;
+import com.sh.fastmanagementdemoapi.enums.Status;
 import com.sh.fastmanagementdemoapi.models.JobApplication;
 import com.sh.fastmanagementdemoapi.services.JobApplicationService;
 import jakarta.validation.Valid;
@@ -17,16 +20,18 @@ import java.util.List;
 @RequestMapping("/api/v1/hiring")
 public class JobApplicationController {
 
-    JobApplicationService service = new JobApplicationService();
+    @Autowired
+    JobApplicationService service;
 
     @PostMapping("/start")
     public ResponseEntity postApplication(@Valid @RequestBody JobApplicationNameDto candidate) throws Exception {
         int newApplicationId = service.startApplication(candidate.nome());
-        return new ResponseEntity<>(newApplicationId, HttpStatus.CREATED);
+        return new ResponseEntity<>(new JobApplicationIdDto(newApplicationId), HttpStatus.CREATED);
     }
 
     @PostMapping("/schedule")
     public ResponseEntity postSchedule(@Valid @RequestBody JobApplicationIdDto id) throws Exception {
+        System.out.println("KKKKKKKKKKKKKKKKKKK");
         service.scheduleInterview(id.codCandidato());
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -51,13 +56,13 @@ public class JobApplicationController {
         } catch (Exception error) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        service.approveCandidate(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        String status = service.checkApplicationStatus(id);
+        return new ResponseEntity<>(new JobApplicationStatusDto(status), HttpStatus.OK);
     }
 
     @GetMapping("/approved")
-    public ResponseEntity<List<String>> getApproved() throws Exception {
+    public ResponseEntity getApproved() throws Exception {
         List<String> approved = service.sendApproved();
-        return new ResponseEntity<>(approved, HttpStatus.OK);
+        return new ResponseEntity<>(new JobApplicationApprovedDto(approved), HttpStatus.OK);
     }
 }
