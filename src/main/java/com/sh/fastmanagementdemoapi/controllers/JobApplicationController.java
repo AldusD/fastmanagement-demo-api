@@ -31,7 +31,6 @@ public class JobApplicationController {
 
     @PostMapping("/schedule")
     public ResponseEntity postSchedule(@Valid @RequestBody JobApplicationIdDto id) throws Exception {
-        System.out.println("KKKKKKKKKKKKKKKKKKK");
         service.scheduleInterview(id.codCandidato());
         return new ResponseEntity<>(HttpStatus.OK);
     }
