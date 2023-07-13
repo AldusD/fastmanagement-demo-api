@@ -8,4 +8,4 @@ This project was used to consolidating the knowledge in the following technologi
 - OOP and Java basics  
 - CD/CI circtuits deploying from a Dockerfile
 
-  This Read.me file will be updated with instructions to run in dev enviroment and API docs (as soos as the full version is released).
+  This Readme.md file will be updated with instructions to run in dev enviroment and API docs (as soos as the full version is released).
