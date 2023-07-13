@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/v1/hiring")
 public class JobApplicationController {
 
