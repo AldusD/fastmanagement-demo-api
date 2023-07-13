@@ -62,6 +62,10 @@ public class JobApplicationService {
         repository.updateApplication(id, Status.APROVADO);
     }
 
+    public List<JobApplication> sendAll() {
+        return repository.findAll();
+    }
+
     public List<String> sendApproved() {
         return repository.findApproved();
     }

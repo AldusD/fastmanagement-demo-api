@@ -1,9 +1,6 @@
 package com.sh.fastmanagementdemoapi.controllers;
 
-import com.sh.fastmanagementdemoapi.dtos.JobApplicationApprovedDto;
-import com.sh.fastmanagementdemoapi.dtos.JobApplicationIdDto;
-import com.sh.fastmanagementdemoapi.dtos.JobApplicationNameDto;
-import com.sh.fastmanagementdemoapi.dtos.JobApplicationStatusDto;
+import com.sh.fastmanagementdemoapi.dtos.*;
 import com.sh.fastmanagementdemoapi.enums.Status;
 import com.sh.fastmanagementdemoapi.models.JobApplication;
 import com.sh.fastmanagementdemoapi.services.JobApplicationService;
@@ -58,6 +55,12 @@ public class JobApplicationController {
         }
         String status = service.checkApplicationStatus(id);
         return new ResponseEntity<>(new JobApplicationStatusDto(status), HttpStatus.OK);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity getall() throws Exception {
+        List<JobApplication> applications = service.sendAll();
+        return new ResponseEntity<>(new JobApplicationAllDto(applications), HttpStatus.OK);
     }
 
     @GetMapping("/approved")

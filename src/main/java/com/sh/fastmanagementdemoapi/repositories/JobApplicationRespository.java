@@ -57,6 +57,10 @@ public class JobApplicationRespository {
         return approved;
     }
 
+    public List<JobApplication> findAll() {
+        return applications;
+    }
+
     public void updateApplication (int id, Status status) {
         Optional<JobApplication> application = findById(id);
         application.get().setStatus(status);
