@@ -1,6 +1,6 @@
 # Fast Management demo API
 
-[Leia esta página em português](https://github.com/AldusD/chessad/blob/main/README-pt.md)
+[Leia esta página em português](https://github.com/AldusD/fastmanagement-demo-api/blob/main/README-pt.md)
 
 [App Deploy](https://fastmanagement-demo-api.onrender.com/) [|](https://github.com/AldusD/fastmanagement-demo-api) [Frontend Repository](https://github.com/AldusD/fastmanagement-demo-interface)
 
